@@ -2,17 +2,19 @@ class ListsController < ApplicationController
 
   def new
    # Viewへ渡すためのインスタンス変数に空のModelオブジェクトを生成する。
-   @list=List.new
+   @list=List.ne
   end
 
-  def create
 
-    @list = List.new(list_params)
+  def create
+    @list=List.new(list_params)
     if @list.save
+      flash[:notice]="投稿が完了しました"
       redirect_to list_path(@list.id)
     else
       render :new
     end
+
   end
 
   def show
